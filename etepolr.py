@@ -4,6 +4,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+import pickle
 # %matplotlib inline
 from sklearn.datasets import load_boston
 boston=load_boston()
@@ -17,6 +18,7 @@ boston=load_boston()
 # print(cancer.target)
 boston_dataset=pd.DataFrame(boston.data)
 boston_dataset.columns=boston.feature_names
+print(boston_dataset[ : 1])
 boston_dataset["rate"]=boston.target
 # print(cancer_dataset[cancer_dataset.columns[-1]].head())
 # print(boston_dataset.info())
@@ -41,18 +43,20 @@ x_train,x_test,y_train,y_test=train_test_split(x,y,test_size=0.3,random_state=42
 # print(x_test)
 # Standardising the dataset to acheive the global mimuma in the internl (Gradient descent)
 from sklearn.preprocessing import StandardScaler
-<<<<<<< HEAD
-=======
-import pickle 
->>>>>>> 7b101c193260e4195a25e33693203661ee1ae176
+# <<<<<<< HEAD
+# =======
+# import pickle 
+# >>>>>>> 7b101c193260e4195a25e33693203661ee1ae176
+
 scaler=StandardScaler()
+
 x_train=scaler.fit_transform(x_train)
 x_test=scaler.transform(x_test)
 print(x_train)
 print(x_test)
 # filename1='standard_scaler'
 pickle.dump(scaler,open('scaling.pkl','wb'))
-pickle_scaler=pickle.load(open('scaling.pkl','rb'))
+# pickle_scaler=pickle.load(open('scaling.pkl','rb'))
 
 ### Model training
 
@@ -113,7 +117,7 @@ print(regression.predict(boston.data[1].reshape(1,-1)))### here we got negative 
 
 #### PICKLING THE MODEL
 
-import pickle
+# import pickle
 filename="regression_model"
 pickle.dump(regression,open('filename','wb'))
 pickle_model=pickle.load(open('filename','rb'))
