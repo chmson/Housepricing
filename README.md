@@ -14,3 +14,12 @@
 3.[HerokuAccount](https:/heroku.com)
 
 4.[GitCLI]()
+
+
+
+
+Create a new Environment
+
+conda create -p venv python==3.7 -y
+
+git config --global user.name "chmson"

@@ -41,11 +41,15 @@ x_train,x_test,y_train,y_test=train_test_split(x,y,test_size=0.3,random_state=42
 # print(x_test)
 # Standardising the dataset to acheive the global mimuma in the internl (Gradient descent)
 from sklearn.preprocessing import StandardScaler
+import pickle 
 scaler=StandardScaler()
 x_train=scaler.fit_transform(x_train)
 x_test=scaler.transform(x_test)
-# print(x_train)
-# print(x_test)
+print(x_train)
+print(x_test)
+# filename1='standard_scaler'
+pickle.dump(scaler,open('scaling.pkl','wb'))
+pickle_scaler=pickle.load(open('scaling.pkl','rb'))
 
 ### Model training
 
@@ -96,10 +100,13 @@ print(score) #### more the value towards the one more will be the accuracy of th
 print(1- (1-score)*(len(y_test)-1)/(len(y_test)-x_test.shape[1]-1))
 
 #### New Data Predction
-print(boston.data[1].reshape(-1,1).shape) ### here we need to reshape the data because while we are training the model, 
-#### we gave 2 dimensional data like rows and coloums but while we are predicting the new data we only giving without columns without the count of number of rows..
+print(boston.data[1].reshape(-1,1).shape) ### here we need to reshape the data because
+#  while we are training the model, 
+#### we gave 2 dimensional data like rows and coloums but while we are predicting the 
+# new data we only giving without columns without the count of number of rows..
 # scaler.transform(boston.data[0].reshape(1,-1))
-print(regression.predict(boston.data[1].reshape(1,-1)))### here we got negative prediction because we missed standardaistaion of the data 
+print(regression.predict(boston.data[1].reshape(1,-1)))### here we got negative prediction
+#  because we missed standardaistaion of the data 
 
 #### PICKLING THE MODEL
 
