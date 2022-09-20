@@ -3,6 +3,4 @@ sklearn
 pandas
 numpy
 matplotlib
-random
-cv2
 gunicorn
