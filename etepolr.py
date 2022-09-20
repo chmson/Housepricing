@@ -3,10 +3,11 @@ import random
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+from sklearn.datasets import load_boston
 import seaborn as sns
 import pickle
 # %matplotlib inline
-from sklearn.datasets import load_boston
+
 boston=load_boston()
 
 # data exploring
